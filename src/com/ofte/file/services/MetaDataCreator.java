@@ -51,180 +51,96 @@ public class MetaDataCreator {
 	 * @return metaDataMap
 	 * @throws InvalidAttributesException
 	 */
-	public static HashMap<String, String> mapUpdater(int i, HashMap<String, String> map, HashMap<String, String> metaDataMap)
+	public static Map<String, String> mapUpdater(int i, String[] args, Map<String, String> metaDataMap)
 			throws InvalidAttributesException {
 		// switch case
-//		switch (args[i]) {
-//		// Depending upon the case we are setting the values into
-//		// metaDataMap through the keys
-//		case "-dd":
-//			metaDataMap.put("destinationDirectory", args[i + 1]);
-//			metaDataMap.put("sourceDirectory", args[i + 2]);
-//			break;
-//		case "-df":
-//			metaDataMap.put("destiationFile", args[i + 1]);
-//			metaDataMap.put("sourceDirectory", args[i + 2]);
-//			break;
-//		case "-tr":
-//			metaDataMap.put("triggerPattern", args[i + 1]);
-//			break;
-//		case "-trd":
-//			metaDataMap.put("destinationTriggerPattern", args[i + 1]);
-//			break;
-//		case "-pi":
-//			metaDataMap.put("pollInterval", args[i + 1]);
-//			break;
-//		case "-pu":
-//			metaDataMap.put("pollUnits", args[i + 1]);
-//			break;
-//		case "-jn":
-//			metaDataMap.put("jobName", args[i + 1]);
-//			break;
-//		case "-gt":
-//			metaDataMap.put("xmlFilePath", args[i + 1]);
-//			break;
-//		case "-sfp":
-//			metaDataMap.put("sourcefilePattern", args[i + 1]);
-//			break;
-//		case "-dfp":
-//			metaDataMap.put("destinationFilePattern", args[i + 1]);
-//			break;
-//		case "-sftp-s":
-//			metaDataMap.put("sftpAsSource", args[i + 1]);
-//			break;
-//		case "-sftp-d":
-//			metaDataMap.put("sftpAsDestination", args[i + 1]);
-//			break;
-//		case "-hi":
-//			metaDataMap.put("hostIp", args[i + 1]);
-//			break;
-//		case "-un":
-//			metaDataMap.put("userName", args[i + 1]);
-//			break;
-//		case "-pw":
-//			metaDataMap.put("password", args[i + 1]);
-//			break;
-//		case "-po":
-//			metaDataMap.put("port", args[i + 1]);
-//			break;
-//		case "-sn":
-//			metaDataMap.put("schedulerName", args[i + 1]);
-//			break;
-//		case "-preSrc":
-//			metaDataMap.put("preSource", args[i + 1]);
-//			break;
-//		case "-preDst":
-//			metaDataMap.put("preDestination", args[i + 1]);
-//			break;
-//		case "-postSrc":
-//			metaDataMap.put("postSource", args[i + 1]);
-//			break;
-//		case "-postDst":
-//			metaDataMap.put("postDestination", args[i + 1]);
-//			break;
-//		case "-de":
-//			if ("overwrite".equalsIgnoreCase(args[i + 1]) || "error".equalsIgnoreCase(args[i + 1])) {
-//				metaDataMap.put("destinationExists", args[i + 1]);
-//			} else {
-//				throw new InvalidAttributesException();
-//			}
-//			break;
-//		case "-mn":
-//			metaDataMap.put("monitorName", args[i + 1]);
-//			break;
-//		case "-sd":
-//			if ("delete".equalsIgnoreCase(args[i + 1]) || "leave".equalsIgnoreCase(args[i + 1])) {
-//				metaDataMap.put("sourceDisposition", args[i + 1]);
-//			} else {
-//				throw new InvalidAttributesException();
-//			}
-//			break;
-//		case "-f":
-//			metaDataMap.put("monitorOverWrite", "true");
-//		}
-		try {
-
-			for (Map.Entry metaData : map.entrySet()) {
-				if (metaData.getKey().equals("-mn")) {
-					metaDataMap.put("monitorName",
-							metaData.getValue().toString());
-				} else if (metaData.getKey().equals("-sn")) {
-					metaDataMap.put("schedulerName",
-							metaData.getValue().toString());
-				} else if (metaData.getKey().equals("-jn")) {
-					metaDataMap.put("jobName", metaData.getValue().toString());
-				} else if (metaData.getKey().equals("sourceDirectory")) {
-					metaDataMap.put("sourceDirectory",
-							metaData.getValue().toString());
-				} else if (metaData.getKey().equals("-sftp-s")) {
-					metaDataMap.put("sftpAsSource",
-							metaData.getValue().toString());
-				} else if (metaData.getKey().equals("-sftp-d")) {
-					metaDataMap.put("sftpAsDestination",
-							metaData.getValue().toString());
-				} else if (metaData.getKey().equals("-sfp")) {
-					metaDataMap.put("sourcefilePattern",
-							metaData.getValue().toString());
-				} else if (metaData.getKey().equals("-tr")) {
-					metaDataMap.put("triggerPattern",
-							metaData.getValue().toString());
-				} else if (metaData.getKey().equals("-dd")) {
-					metaDataMap.put("destinationDirectory",
-							metaData.getValue().toString());
-				} else if (metaData.getKey().equals("-trd")) {
-					metaDataMap.put("destinationTriggerPattern",
-							metaData.getValue().toString());
-				} else if (metaData.getKey().equals("-dfp")) {
-					metaDataMap.put("destinationFilePattern",
-							metaData.getValue().toString());
-				} else if (metaData.getKey().equals("-pu")) {
-					metaDataMap.put("pollUnits",
-							metaData.getValue().toString());
-				} else if (metaData.getKey().equals("-pi")) {
-					metaDataMap.put("pollInterval",
-							metaData.getValue().toString());
-				} else if (metaData.getKey().equals("-gt")) {
-					metaDataMap.put("xmlFilePath",
-							metaData.getValue().toString());
-				} else if (metaData.getKey().equals("-hi")) {
-					metaDataMap.put("hostIp", metaData.getValue().toString());
-				} else if (metaData.getKey().equals("-un")) {
-					metaDataMap.put("userName", metaData.getValue().toString());
-				} else if (metaData.getKey().equals("-pw")) {
-					metaDataMap.put("password", metaData.getValue().toString());
-				} else if (metaData.getKey().equals("-po")) {
-					metaDataMap.put("port", metaData.getValue().toString());
-				} else if (metaData.getKey().equals("-sd")) {
-					metaDataMap.put("sourceDisposition",
-							metaData.getValue().toString());
-				} else if (metaData.getKey().equals("-de")) {
-					metaDataMap.put("destinationExists",
-							metaData.getValue().toString());
-				} else if (metaData.getKey().equals("-f")) {
-					metaDataMap.put("monitorOverWrite",
-							metaData.getValue().toString());
-				} else if (metaData.getKey().equals("-preSrc")) {
-					metaDataMap.put("preSource",
-							metaData.getValue().toString());
-				} else if (metaData.getKey().equals("-preDst")) {
-					metaDataMap.put("preDestination",
-							metaData.getValue().toString());
-				} else if (metaData.getKey().equals("-postSrc")) {
-					metaDataMap.put("postSource",
-							metaData.getValue().toString());
-				} else if (metaData.getKey().equals("-postDst")) {
-					metaDataMap.put("postDestination",
-							metaData.getValue().toString());
-				}
-
+		switch (args[i]) {
+		// Depending upon the case we are setting the values into
+		// metaDataMap through the keys
+		case "-dd":
+			metaDataMap.put("destinationDirectory", args[i + 1]);
+			metaDataMap.put("sourceDirectory", args[i + 2]);
+			break;
+		case "-df":
+			metaDataMap.put("destiationFile", args[i + 1]);
+			metaDataMap.put("sourceDirectory", args[i + 2]);
+			break;
+		case "-tr":
+			metaDataMap.put("triggerPattern", args[i + 1]);
+			break;
+		case "-trd":
+			metaDataMap.put("destinationTriggerPattern", args[i + 1]);
+			break;
+		case "-pi":
+			metaDataMap.put("pollInterval", args[i + 1]);
+			break;
+		case "-pu":
+			metaDataMap.put("pollUnits", args[i + 1]);
+			break;
+		case "-jn":
+			metaDataMap.put("jobName", args[i + 1]);
+			break;
+		case "-gt":
+			metaDataMap.put("xmlFilePath", args[i + 1]);
+			break;
+		case "-sfp":
+			metaDataMap.put("sourcefilePattern", args[i + 1]);
+			break;
+		case "-dfp":
+			metaDataMap.put("destinationFilePattern", args[i + 1]);
+			break;
+		case "-sftp-s":
+			metaDataMap.put("sftpAsSource", args[i + 1]);
+			break;
+		case "-sftp-d":
+			metaDataMap.put("sftpAsDestination", args[i + 1]);
+			break;
+		case "-hi":
+			metaDataMap.put("hostIp", args[i + 1]);
+			break;
+		case "-un":
+			metaDataMap.put("userName", args[i + 1]);
+			break;
+		case "-pw":
+			metaDataMap.put("password", args[i + 1]);
+			break;
+		case "-po":
+			metaDataMap.put("port", args[i + 1]);
+			break;
+		case "-sn":
+			metaDataMap.put("schedulerName", args[i + 1]);
+			break;
+		case "-preSrc":
+			metaDataMap.put("preSource", args[i + 1]);
+			break;
+		case "-preDst":
+			metaDataMap.put("preDestination", args[i + 1]);
+			break;
+		case "-postSrc":
+			metaDataMap.put("postSource", args[i + 1]);
+			break;
+		case "-postDst":
+			metaDataMap.put("postDestination", args[i + 1]);
+			break;
+		case "-de":
+			if ("overwrite".equalsIgnoreCase(args[i + 1]) || "error".equalsIgnoreCase(args[i + 1])) {
+				metaDataMap.put("destinationExists", args[i + 1]);
+			} else {
+				throw new InvalidAttributesException();
 			}
-		}
-		// catching the exception for InvalidAttributesException
-		catch (Exception e1) {
-			e1.printStackTrace(new PrintWriter(log4jStringWriter));
-			// logging the exception for InvalidAttributesException
-			logger.error(loadProperties.getOFTEProperties().getProperty(
-					"LOGGEREXCEPTION") + log4jStringWriter.toString());
+			break;
+		case "-mn":
+			metaDataMap.put("monitorName", args[i + 1]);
+			break;
+		case "-sd":
+			if ("delete".equalsIgnoreCase(args[i + 1]) || "leave".equalsIgnoreCase(args[i + 1])) {
+				metaDataMap.put("sourceDisposition", args[i + 1]);
+			} else {
+				throw new InvalidAttributesException();
+			}
+			break;
+		case "-f":
+			metaDataMap.put("monitorOverWrite", "true");
 		}
 		// return statement
 		return metaDataMap;
@@ -235,25 +151,19 @@ public class MetaDataCreator {
 	 * @param args
 	 * @throws Exception
 	 */
-//	public static void main(String[] args) throws Exception {
-	public void fetchingUIDetails(HashMap<String, String> hashMap)
-			throws Exception {
+	public static void main(String[] args) throws Exception {
+
 		try {
 			// Creating an object for Map
-			HashMap<String, String> metaDataMap = new HashMap<String, String>();
-			// Creating an object for MetaDataCreations class
-			// MetaDataCreations metaDataCreations=new MetaDataCreations();
+			Map<String, String> metaDataMap = new HashMap<String, String>();
 			// Creating an object for CassandraInteracter class
 			CassandraInteracter cassandraInteracter = new CassandraInteracter();
 
 			KafkaMapData kafkaMapData = new KafkaMapData();
-			// System.out.println(hashMap +" in fetching");
 			// for loop to increment i value until i less than args.length
-			for (int i = 0; i < hashMap.size(); i++) {
-				// System.out.println("Hello");
-				metaDataMap = mapUpdater(i, hashMap, metaDataMap);
+			for (int i = 0; i < args.length; i++) {
+				metaDataMap = mapUpdater(i, args, metaDataMap);
 			}
-			System.out.println(metaDataMap + " after mapupdater");
 			logger.info("MetaDataCreator: Updated MetaData Map");
 			// Creating an object for XMLCreator class
 			
@@ -267,7 +177,6 @@ public class MetaDataCreator {
 						System.out.println("in one time transfer");
 						logger.error("InvalidAttributesException in MetaDataCreation");
 						throw new InvalidAttributesException();
-
 					}
 				} else {
 					if (metaDataMap.get("schedulerName") != null && metaDataMap.get("jobName") != null
@@ -290,10 +199,10 @@ public class MetaDataCreator {
 
 						if (taskStatus == 0) {
 							System.out.println("Scheduler "+metaDataMap.get("schedulerName")+" Created SuccessFully");
-//							System.exit(taskStatus);
+							System.exit(taskStatus);
 						} else {
 							System.out.println("Failed To create Scheduler "+metaDataMap.get("schedulerName"));
-//							System.exit(0);
+							System.exit(0);
 						}
 					} else {
 						System.out.println("InvalidAttributesException in Scheduler creation");
@@ -303,7 +212,7 @@ public class MetaDataCreator {
 				if (cassandraInteracter.DBMonitorCheck(cassandraInteracter.connectCassandra(),
 						metaDataMap.get("monitorName")) == null) {
 					System.out.println("Please specify -mn <monitor Name>");
-//					System.exit(0);
+					System.exit(0);
 				}
 			} else if (metaDataMap.get("xmlFilePath") != null && metaDataMap.get("monitorName") != null) {
 				if (metaDataMap.get("jobName") != null && metaDataMap.get("sourceDirectory") != null
@@ -334,15 +243,16 @@ public class MetaDataCreator {
 							TaskUtils taskCreate = new TaskUtils();
 							String pollTime = taskCreate.calculatePoll(metaDataMap.get("pollUnits"),
 									metaDataMap.get("pollInterval"));
+							System.out.println(pollTime);
 							cassandraInteracter.starting(cassandraInteracter.connectCassandra(),
 									metaDataMap.get("monitorName"), pollTime);
 							int taskStatus = taskCreate.createTask(metaDataMap.get("monitorName"), pollTime, "monitor");
 							if (taskStatus == 0) {
-								System.out.println("Monitor"+metaDataMap.get("monitorName")+"Created Successfully");
-//								System.exit(taskStatus);
+								System.out.println("Monitor "+metaDataMap.get("monitorName")+" Created Successfully");
+								System.exit(taskStatus);
 							} else {
 								System.out.println("Failed To create Monitor"+metaDataMap.get("monitorName"));
-//								System.exit(0);
+								System.exit(0);
 							}
 						} else if (System.getProperty("os.name").contains("Linux")) {
 							System.out.println("creating job for monitor");
@@ -363,12 +273,10 @@ public class MetaDataCreator {
 						throw new Exception("Monitor " + metaDataMap.get("monitorName")
 								+ "already exists click for MonitorOverwrite to override the previous one");
 					}
-
 				}
 				else {
 					throw new InvalidAttributesException();
 				}
-
 			}
 		} catch (SAXException e) {
 			// TODO Auto-generated catch block
